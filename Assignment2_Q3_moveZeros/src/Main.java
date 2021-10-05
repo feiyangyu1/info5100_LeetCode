@@ -6,7 +6,7 @@ public class Main {
         moveZeroes(nums1);
         moveZeroes(nums2);
         for(int i : nums1)
-            System.out.print(i+"  ");
+            System.out.print(i+" ");
 
         System.out.println();
 
