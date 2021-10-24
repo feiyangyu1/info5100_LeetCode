@@ -28,15 +28,15 @@ public class Main {
            }
 
            carry = sum / 10;
-           result.append(sum%10);
+           result.insert(0,sum%10);
 
 
        }
 
        if(carry!=0)
-           result.append(carry);
+           result.insert(0,carry);
 
-       return result.reverse().toString();
+       return result.toString();
     }
 
 }
