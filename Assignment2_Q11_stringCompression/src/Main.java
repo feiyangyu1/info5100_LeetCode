@@ -23,9 +23,9 @@ public class Main {
                 count ++;
                 i++;
             }
-            if(i<chars.length && letter != chars[i]){
+
                 chars[index] = letter;
-                index ++;}
+                index ++;
 
                 if(count != 1){
                     for(char chara : Integer.toString(count).toCharArray()){
@@ -35,7 +35,7 @@ public class Main {
                 }
 
         }
-        return index + 1;
+        return index ;
     }
 
 }
