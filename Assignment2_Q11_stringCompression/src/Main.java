@@ -12,55 +12,30 @@ public class Main {
     }
 
     public static int stringCompression(char[] chars){
-        int count = 0;
-        int node = 0;
-        int num = 1;
+        int i = 0;
+        int index = 0;
 
-        if(chars.length == 1)
-            return 1;
+        while(i < chars.length){
+            char letter = chars[i];
+            int count = 0;
 
-        for(int i = 0; i < chars.length; i ++){
-            if(chars[node] == chars[i]){
+            while(i<chars.length && letter == chars[i]){
                 count ++;
+                i++;
             }
-            else{
-                node = i;
+            if(i<chars.length && letter != chars[i]){
+                chars[index] = letter;
+                index ++;}
 
-                if(count > 1){
-                    if(count < 10){
-                        chars[num] = (char)(count + '0');
-                        num += 2;
-                        count = 1;
+                if(count != 1){
+                    for(char chara : Integer.toString(count).toCharArray()){
+                        chars[index] = chara;
+                        index ++;
                     }
-                    else{
-                        chars[num] = (char)(count / 10 + '0');
-                        chars[num + 1] = (char)(count%10 + '0');
-                        num += 3;
-                        count = 1;
-                    }
-
-
-                }
-                else{
-                    num += 1;
-                    count = 1;
                 }
 
-
-            }
-            if(i == chars.length - 1){
-                if(count < 10){
-                    chars[num] = (char)(count + '0');
-                }
-                else{
-                    chars[num] = (char)(count / 10 + '0');
-                    chars[num + 1] = (char)(count%10 + '0');
-                    num ++;
-                }
-            }
         }
-
-        return num + 1;
+        return index + 1;
     }
 
 }
