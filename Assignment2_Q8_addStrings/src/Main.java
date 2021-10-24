@@ -7,90 +7,36 @@ public class Main {
     }
 
     public static String addStrings(String str1, String str2){
-        int int1 = 0;
-        int int2 = 0;
+       StringBuilder result = new StringBuilder();
 
-        for(int i=0; i<str1.length(); i++){
-            char str = str1.charAt(i);
+       int i = str1.length()-1;
+       int j = str2.length()-1;
 
-            switch ((str)){
-                case '0':
-                    int1 = int1*10+0;
-                    break;
-                case '1':
-                    int1 = int1*10+1;
-                    break;
-                case '2':
-                    int1 = int1*10+2;
-                    break;
-                case '3':
-                    int1 = int1*10+3;
-                    break;
-                case '4':
-                    int1 = int1*10+4;
-                    break;
-                case '5':
-                    int1 = int1*10+5;
-                    break;
-                case '6':
-                    int1 = int1*10+6;
-                    break;
-                case '7':
-                    int1 = int1*10+7;
-                    break;
-                case '8':
-                    int1 = int1*10+8;
-                    break;
-                case '9':
-                    int1 = int1*10+9;
-                    break;
-                default:
-                    break;
+       int sum = 0;
+       int carry = 0;
 
-            }
-        }
+       while(i>=0 || j>=0){
+           sum = carry;
+           if(i>=0){
+               sum += str1.charAt(i) - '0';
+               i--;
+           }
 
-        for(int i=0; i<str2.length(); i++){
-            char str = str2.charAt(i);
+           if(j>=0){
+               sum += str2.charAt(j) - '0';
+               j--;
+           }
 
-            switch ((str)){
-                case '0':
-                    int2 = int2*10+0;
-                    break;
-                case '1':
-                    int2 = int2*10+1;
-                    break;
-                case '2':
-                    int2 = int2*10+2;
-                    break;
-                case '3':
-                    int2 = int2*10+3;
-                    break;
-                case '4':
-                    int2 = int2*10+4;
-                    break;
-                case '5':
-                    int2 = int2*10+5;
-                    break;
-                case '6':
-                    int2 = int2*10+6;
-                    break;
-                case '7':
-                    int2 = int2*10+7;
-                    break;
-                case '8':
-                    int2 = int2*10+8;
-                    break;
-                case '9':
-                    int2 = int2*10+9;
-                    break;
-                default:
-                    break;
+           carry = sum / 10;
+           result.append(sum%10);
 
-            }
-        }
 
-        return Integer.toString(int1+int2);
+       }
+
+       if(carry!=0)
+           result.append(carry);
+
+       return result.reverse().toString();
     }
 
 }
