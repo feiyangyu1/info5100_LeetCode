@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -21,26 +23,21 @@ public class Main {
         if(str2.length() != str1.length())
             return false;
 
-        int[] arr1 = new int[128];
-        int[] arr2 = new int[128];
-
-        for(int i=0; i< str1.length(); i++){
+        HashMap<Character, Character> map = new HashMap<Character, Character>();
+        for(int i = 0; i<str1.length(); i++){
             char char1 = str1.charAt(i);
             char char2 = str2.charAt(i);
-
-            if(arr1[char1] == 0 && arr2[char2] == 0){
-                arr1[char1] = char1;
-                arr2[char2] = char2;
+            if(map.containsKey(char1)){
+                if(map.get(char1) != char2)
+                    return false;
             }
-
-            else if(arr1[char1] == char1 && arr2[char2] == char2){
-                arr1[char1] = char1;
-                arr2[char2] = char2;
+            else {
+                if(!map.containsValue(char2))
+                    map.put(char1,char2);
+                else
+                    return false;
             }
-            else
-                return false;
         }
-
         return true;
     }
 
