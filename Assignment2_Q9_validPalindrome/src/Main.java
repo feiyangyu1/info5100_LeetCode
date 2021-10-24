@@ -9,32 +9,27 @@ public class Main {
         System.out.println(validPalindrome(s));
     }
 
-    public static boolean validPalindrome(String s){
+    public static boolean validPalindrome(String s) {
+
+        s = s.replaceAll("[^A-Za-z0-9]","");
         s = s.toLowerCase();
-        int front = 0;
-        int back = s.length()-1;
-        while(front>=0 && back <=s.length()-1 && front < back){
-            char frontChar;
-            char backChar;
-            while(!(s.charAt(front) >= 'a' && s.charAt(front) < 'z')){
-                front ++;
-            }
-            frontChar = s.charAt(front);
 
-            while(!(s.charAt(back) >= 'a' && s.charAt(back) < 'z')){
-                back --;
-            }
-            backChar = s.charAt(back);
+        int start = 0;
+        int end = s.length()-1;
 
-            if(frontChar != backChar)
+        while(start < end){
+            if(s.charAt(start) != s.charAt(end))
                 return false;
             else{
-                front ++;
-                back --;
+                start ++;
+                end --;
             }
         }
 
+
         return true;
+
+
     }
 
 
