@@ -18,7 +18,7 @@ public class Main {
     }
 
     public static String reverseString(String s) {
-        String result = "";
+        String result ="";
         String[] arr = s.trim().split(" +");
         Collections.reverse(Arrays.asList(arr));
 
@@ -26,13 +26,14 @@ public class Main {
             if (i == arr.length - 1) {
                 result = result + " " + arr[i];
             } else if (i == 0) {
+
                 result = arr[i];
             } else {
                 result = result + " " + arr[i];
             }
         }
 
-            return result;
+            return result.trim();
     }
     }
 
